@@ -16,6 +16,6 @@ public class DataHeaderFileSet extends HashSet<DataHeaderFile> {
     }
 
     private long calcHeaderFileSize(DataHeaderFile item) {
-        return item.getFileName().length() + 1 + 4;
+        return item.getFileName().length() + 1 + 4*2;
     }
 }

@@ -16,7 +16,12 @@ public class HideData {
 
         for (int i = 0; i < b.length; i++) {
             byte c = b[i];
-            System.out.print((0xFF & c)+",");
+            System.out.print((0xFF & c) + ",");
+        }
+        System.out.println();
+        for (int i = 0; i < b.length; i++) {
+            byte c = b[i];
+            System.out.print((char)(0xFF & c) + ",");
         }
     }
 

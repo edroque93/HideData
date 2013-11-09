@@ -15,19 +15,21 @@ public class DataHeaderFile {
     }
 
     public void setFileName(String fileName) throws Exception {
-        if (!new File(fileName).exists())
+        File file = new File(fileName);
+
+        if (!file.exists())
             throw new Exception("El fichero no se puede manipular: no existe");
-        
-        this.fileName = fileName;
-        this.fileSize = getFileSize();
+
+        this.fileName = file.getName();
+        this.fileSize = file.length();
     }
 
     public String getFileName() {
         return fileName;
     }
 
-    private long getFileSize() {
-        return new File(fileName).length();
+    public long getFileSize() {
+        return fileSize;
     }
 
 }
