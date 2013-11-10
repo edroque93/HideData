@@ -2,9 +2,6 @@ package Model;
 
 import Persistence.SaveFile;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class FileBuilder {
 
