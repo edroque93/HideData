@@ -1,5 +1,6 @@
 package Model;
 
+import Persistence.SaveFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
@@ -27,12 +28,7 @@ public class FileBuilder {
         for (String item : filesToHide)
             dataHeader.addFile(item);
 
-        FileOutputStream out = new FileOutputStream(destFile);
-
-        out.write(Files.readAllBytes(Paths.get(originalFile)));
-        out.write(dataHeader.getHeader());
-        for (String item : filesToHide)
-            out.write(Files.readAllBytes(Paths.get(item)));
+        SaveFile.saveToFile(destFile, originalFile, dataHeader.getHeader(), filesToHide);
     }
 
 }
