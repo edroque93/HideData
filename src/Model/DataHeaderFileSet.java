@@ -4,10 +4,8 @@ import java.util.HashSet;
 
 public class DataHeaderFileSet extends HashSet<DataHeaderFile> {
 
-    private int sizeOfHeaderFileSet;
-
     public int getSizeOfHeaderFileSet() {
-        sizeOfHeaderFileSet = 0;
+        int sizeOfHeaderFileSet = 0;
 
         for (DataHeaderFile item : this)
             sizeOfHeaderFileSet += calcHeaderFileSize(item);
@@ -15,7 +13,16 @@ public class DataHeaderFileSet extends HashSet<DataHeaderFile> {
         return sizeOfHeaderFileSet;
     }
 
+    public long getSizeOfFileSet() {
+        long size = 0;
+
+        for (DataHeaderFile item : this)
+            size += item.getFileSize();
+
+        return size;
+    }
+
     private long calcHeaderFileSize(DataHeaderFile item) {
-        return item.getFileName().length() + 1 + 4*2;
+        return item.getFileName().length() + 1 + 4 * 2;
     }
 }

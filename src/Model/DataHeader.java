@@ -25,7 +25,7 @@ public class DataHeader {
         files.add(new DataHeaderFile(file));
     }
 
-    public byte[] getBytesOfHeader() throws UnsupportedEncodingException {
+    public byte[] getHeader() throws UnsupportedEncodingException {
         calcSizeOfHeader();
 
         byte[] result = new byte[sizeOfHeader];
@@ -53,9 +53,14 @@ public class DataHeader {
             result[pointer + 6] = (byte) (fileSize >>> 16);
             result[pointer + 7] = (byte) (fileSize >>> 8);
             result[pointer + 8] = (byte) (fileSize);
+            pointer += 9;
         }
 
         return result;
+    }
+
+    public long getSizeOfFiles() {
+        return files.getSizeOfFileSet();
     }
 
     private void calcSizeOfHeader() {

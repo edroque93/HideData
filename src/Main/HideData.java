@@ -1,6 +1,6 @@
 package Main;
 
-import Model.DataHeader;
+import Model.FileBuilder;
 
 /**
  * @author Quique, ThePirateCat
@@ -8,11 +8,13 @@ import Model.DataHeader;
 public class HideData {
 
     public static void main(String[] args) throws Exception {
+        FileBuilder fb = new FileBuilder("C:\\output.png", "C:\\gato.png", new String[] {"C:\\Avatar.png"});
         //MainFrame finalframe = new MainFrame();
-
+        /*
         DataHeader dh = new DataHeader();
         dh.addFile("C:\\a.txt");
-        byte[] b = dh.getBytesOfHeader();
+        dh.addFile("C:\\asdf.txt");
+        byte[] b = dh.getHeader();
 
         for (int i = 0; i < b.length; i++) {
             byte c = b[i];
@@ -21,8 +23,8 @@ public class HideData {
         System.out.println();
         for (int i = 0; i < b.length; i++) {
             byte c = b[i];
-            System.out.print((char)(0xFF & c) + ",");
-        }
+            System.out.print((char) (0xFF & c) + ",");
+        }*/
     }
 
 }
