@@ -10,9 +10,6 @@ public class FileBuilder {
     private String destFile;
     private String originalFile;
     private String[] filesToHide;
-    private byte[] original;
-    private byte[] header;
-    private byte[] files;
 
     public FileBuilder(String destFile, String originalFile, String[] filesToHide) throws Exception {
         if (!new File(originalFile).exists())
@@ -30,16 +27,12 @@ public class FileBuilder {
         for (String item : filesToHide)
             dataHeader.addFile(item);
 
-        header = dataHeader.getHeader();
-        files = new byte[(int) dataHeader.getSizeOfFiles()]; // 2Gb max file
-
         FileOutputStream out = new FileOutputStream(destFile);
 
         out.write(Files.readAllBytes(Paths.get(originalFile)));
-        out.write(header);
+        out.write(dataHeader.getHeader());
         for (String item : filesToHide)
             out.write(Files.readAllBytes(Paths.get(item)));
-
     }
 
 }

@@ -31,6 +31,7 @@ public class DataHeader {
         byte[] result = new byte[sizeOfHeader];
 
         System.arraycopy(trueHeader, 0, result, 0, trueHeader.length);
+        
         result[trueHeader.length] = (byte) (sizeOfHeader >>> 24);
         result[trueHeader.length + 1] = (byte) (sizeOfHeader >>> 16);
         result[trueHeader.length + 2] = (byte) (sizeOfHeader >>> 8);
