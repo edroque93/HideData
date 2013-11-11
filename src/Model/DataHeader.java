@@ -76,10 +76,6 @@ public class DataHeader {
         return trueHeader;
     }
 
-    public long getSizeOfFiles() {
-        return files.getSizeOfFileSet();
-    }
-
     private void calcSizeOfHeader() {
         sizeOfHeader = trueHeader.length;
         sizeOfHeader += 4;

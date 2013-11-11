@@ -14,6 +14,7 @@ public class HideData {
 
         DeconstructFile df = new DeconstructFile("C:\\output.png");
         df.extractFile("C:\\SALIDA.png", "Avatar.png");
+        df.extractFile("C:\\X.txt", "asdf.txt");
     }
 
 }

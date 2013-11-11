@@ -13,15 +13,6 @@ public class DataHeaderFileSet extends TreeSet<DataHeaderFile> {
         return sizeOfHeaderFileSet;
     }
 
-    public long getSizeOfFileSet() {
-        long size = 0;
-
-        for (DataHeaderFile item : this)
-            size += item.getFileSize();
-
-        return size;
-    }
-
     public String[] getFiles() {
         String[] result = new String[this.size()];
         int i = 0;
