@@ -1,8 +1,8 @@
 package Model;
 
-import java.util.HashSet;
+import java.util.TreeSet;
 
-public class DataHeaderFileSet extends HashSet<DataHeaderFile> {
+public class DataHeaderFileSet extends TreeSet<DataHeaderFile> {
 
     public int getSizeOfHeaderFileSet() {
         int sizeOfHeaderFileSet = 0;
@@ -20,6 +20,24 @@ public class DataHeaderFileSet extends HashSet<DataHeaderFile> {
             size += item.getFileSize();
 
         return size;
+    }
+
+    public String[] getFiles() {
+        String[] result = new String[this.size()];
+        int i = 0;
+
+        for (DataHeaderFile item : this)
+            result[i++] = item.getFileName();
+
+        return result;
+    }
+
+    public long getSizeOfFile(String file) {
+        for (DataHeaderFile item : this)
+            if (item.getFileName().equalsIgnoreCase(file))
+                return item.getFileSize();
+
+        return 0;
     }
 
     private long calcHeaderFileSize(DataHeaderFile item) {

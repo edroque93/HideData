@@ -18,5 +18,6 @@ public class SaveFile {
         out.write(header);
         for (String file : files)
             out.write(Files.readAllBytes(Paths.get(file)));
+        out.close();
     }
 }

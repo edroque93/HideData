@@ -16,10 +16,9 @@ public class FileBuilder {
         this.originalFile = originalFile;
         this.filesToHide = filesToHide;
         this.destFile = destFile;
-        build();
     }
 
-    private void build() throws Exception {
+    public void build() throws Exception {
         DataHeader dataHeader = new DataHeader();
 
         for (String item : filesToHide)
@@ -27,5 +26,4 @@ public class FileBuilder {
 
         SaveFile.saveToFile(destFile, originalFile, dataHeader.getHeader(), filesToHide);
     }
-
 }

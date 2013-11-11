@@ -2,16 +2,18 @@ package Model;
 
 import java.io.File;
 
-public class DataHeaderFile {
+public class DataHeaderFile implements Comparable<DataHeaderFile>{
 
     private String fileName;
     private long fileSize;
 
-    public DataHeaderFile() {
-    }
-
     public DataHeaderFile(String file) throws Exception {
         this.setFileName(file);
+    }
+
+    public DataHeaderFile(String fileName, long fileSize) {
+        this.fileName = fileName;
+        this.fileSize = fileSize;
     }
 
     public void setFileName(String fileName) throws Exception {
@@ -22,6 +24,11 @@ public class DataHeaderFile {
 
         this.fileName = file.getName();
         this.fileSize = file.length();
+
+    }
+
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
     }
 
     public String getFileName() {
@@ -32,4 +39,8 @@ public class DataHeaderFile {
         return fileSize;
     }
 
+    @Override
+    public int compareTo(DataHeaderFile o) {
+        return this.getFileName().compareTo(o.getFileName());
+    }
 }

@@ -25,6 +25,10 @@ public class DataHeader {
         files.add(new DataHeaderFile(file));
     }
 
+    public void addFile(String file, long size) throws Exception {
+        files.add(new DataHeaderFile(file, size));
+    }
+
     public byte[] getHeader() throws UnsupportedEncodingException {
         calcSizeOfHeader();
 
@@ -60,6 +64,18 @@ public class DataHeader {
         return result;
     }
 
+    public String[] getFiles() {
+        return files.getFiles();
+    }
+
+    public long getSizeOfFile(String file) {
+        return files.getSizeOfFile(file);
+    }
+
+    public byte[] getTrueHeader() {
+        return trueHeader;
+    }
+
     public long getSizeOfFiles() {
         return files.getSizeOfFileSet();
     }
@@ -69,5 +85,4 @@ public class DataHeader {
         sizeOfHeader += 4;
         sizeOfHeader += files.getSizeOfHeaderFileSet();
     }
-
 }
