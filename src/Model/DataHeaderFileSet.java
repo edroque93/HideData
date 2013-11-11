@@ -25,7 +25,7 @@ public class DataHeaderFileSet extends TreeSet<DataHeaderFile> {
 
     public long getSizeOfFile(String file) {
         for (DataHeaderFile item : this)
-            if (item.getFileName().equalsIgnoreCase(file))
+            if (item.getFileName().equals(file))
                 return item.getFileSize();
 
         return 0;

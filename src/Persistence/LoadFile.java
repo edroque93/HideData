@@ -73,7 +73,7 @@ public class LoadFile {
         boolean found = false;
 
         for (String item : list)
-            if (item.equalsIgnoreCase(data))
+            if (item.equals(data))
                 found = true;
 
         if (!found)
@@ -84,7 +84,7 @@ public class LoadFile {
             long skip = 0;
 
             for (String item : list) {
-                if (item.equalsIgnoreCase(data))
+                if (item.equals(data))
                     break;
 
                 skip += dataHeader.getSizeOfFile(item);
