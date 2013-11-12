@@ -1,5 +1,6 @@
-package Model;
+package Control;
 
+import Model.DataHeader;
 import Persistence.SaveFile;
 import java.io.File;
 

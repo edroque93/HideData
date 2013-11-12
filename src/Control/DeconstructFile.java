@@ -1,5 +1,6 @@
-package Model;
+package Control;
 
+import Model.DataHeader;
 import Persistence.LoadFile;
 
 public class DeconstructFile {
