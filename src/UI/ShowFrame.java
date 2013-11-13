@@ -25,7 +25,6 @@ public class ShowFrame extends JFrame {
     public ShowFrame() throws HeadlessException {
         setTitle(showFrameTitle);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        
         WindowListener exitListener = new WindowAdapter() {
 
             @Override
@@ -33,9 +32,7 @@ public class ShowFrame extends JFrame {
                 close();
             }
         };
-        
         addWindowListener(exitListener);
-        
         setSize(frameDimension);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -47,8 +44,9 @@ public class ShowFrame extends JFrame {
         this();
         this.superFrame = superFrame;
     }
-    
+
     private void close() {
+        this.setVisible(false);
         superFrame.setVisible(true);
         dispose();
     }
@@ -60,6 +58,7 @@ public class ShowFrame extends JFrame {
 
     private JPanel createTreePanel() {
         JPanel panel = new JPanel();
+        // Jugando un poco...
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Raiz");
         DefaultMutableTreeNode x = new DefaultMutableTreeNode("Hijo x");
         DefaultMutableTreeNode y = new DefaultMutableTreeNode("Hijo y");
@@ -67,7 +66,7 @@ public class ShowFrame extends JFrame {
         root.add(y);
         JTree tree = new JTree(root);
         tree.setBorder(BorderFactory.createLineBorder(Color.black));
-        tree.setPreferredSize(new Dimension(100,75));
+        tree.setPreferredSize(new Dimension(100, 75));
         panel.add(tree);
         return panel;
     }

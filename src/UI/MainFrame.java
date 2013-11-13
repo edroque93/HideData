@@ -5,15 +5,15 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.HeadlessException;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
@@ -21,14 +21,16 @@ public class MainFrame extends JFrame {
     private final String frameTitle = "HideData Alpha Release, ThePirateCat";
     private final Dimension frameDimension = new Dimension(365, 200);
     private final Dimension funcButton = new Dimension(200, 30);
+    private final Font funcFont = new Font("Arial", Font.BOLD, 16);
 
-    public MainFrame() throws HeadlessException, IOException {
+    public MainFrame() throws Exception {
         setTitle(frameTitle);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(frameDimension);
         setResizable(false);
         setLocationRelativeTo(null);
-        setContentPane(new backImage(ImageIO.read(getClass().getResource("/Resources/stripes.png"))));
+        setContentPane(new BackgroundPanel(ImageIO.read(getClass().getResource("/Resources/stripebg.png")),
+                new BorderLayout()));
         createComponents();
         setVisible(true);
     }
@@ -63,6 +65,7 @@ public class MainFrame extends JFrame {
 
     private JButton createHide() {
         JButton button = new JButton("Ocultar");
+        button.setFont(funcFont);
         button.setMaximumSize(funcButton);
         button.setPreferredSize(funcButton);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -72,6 +75,7 @@ public class MainFrame extends JFrame {
     private JButton createShow() {
         JButton button = new JButton("Mostrar");
         final JFrame buffer = this;
+        button.setFont(funcFont);
         button.setMaximumSize(funcButton);
         button.setPreferredSize(funcButton);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -88,6 +92,16 @@ public class MainFrame extends JFrame {
 
     private JButton createPanelAcercaDe() {
         JButton button = new JButton("Acerca de");
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(getContentPane(),
+                        "HideData, oculta información en cualquier fichero anexando al final",
+                        "Acerca de",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
         return button;
     }
 
