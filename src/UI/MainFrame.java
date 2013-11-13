@@ -58,7 +58,7 @@ public class MainFrame extends JFrame {
     private JPanel createExtraPanel() {
         JPanel panel = new JPanel(new FlowLayout());
         panel.setBackground(new Color(0, 0, 0, 0));
-        panel.add(createPanelAcercaDe());
+        panel.add(createPanelAbout());
         panel.add(createPanelExit());
         return panel;
     }
@@ -90,7 +90,7 @@ public class MainFrame extends JFrame {
         return button;
     }
 
-    private JButton createPanelAcercaDe() {
+    private JButton createPanelAbout() {
         JButton button = new JButton("Acerca de");
         button.addActionListener(new ActionListener() {
 
