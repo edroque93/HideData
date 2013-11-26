@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
+import java.awt.Point;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -23,6 +24,7 @@ public class ShowFrame extends JFrame {
     private JFrame superFrame;
 
     public ShowFrame() throws HeadlessException {
+        super();
         setTitle(showFrameTitle);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         WindowListener exitListener = new WindowAdapter() {
@@ -43,10 +45,12 @@ public class ShowFrame extends JFrame {
     public ShowFrame(JFrame superFrame) {
         this();
         this.superFrame = superFrame;
+        setSpawnLocation();
     }
 
     private void close() {
         this.setVisible(false);
+        superFrame.setLocation(calculateLocationPoint(this, superFrame));
         superFrame.setVisible(true);
         dispose();
     }
@@ -89,5 +93,18 @@ public class ShowFrame extends JFrame {
         JButton button = new JButton("...");
         return button;
     }
+    
+    private Point calculateLocationPoint(JFrame a, JFrame b) {
+        int x = a.getLocation().x + a.getWidth() / 2;
+        int y = a.getLocation().y + a.getHeight() / 2;
 
+        x -= b.getWidth() / 2;
+        y -= b.getHeight() / 2;
+
+        return new Point(x, y);   
+    }
+
+    private void setSpawnLocation() {
+        this.setLocation(calculateLocationPoint(superFrame, this));
+    }
 }

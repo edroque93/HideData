@@ -15,7 +15,7 @@ public class DataHeader {
         0x48, 0x69, 0x64, 0x65, 0x44, 0x61, 0x74, 0x61, 8, 11, 13
     };
     private int sizeOfHeader;
-    private DataHeaderFileSet files;
+    private final DataHeaderFileSet files;
 
     public DataHeader() {
         files = new DataHeaderFileSet();
