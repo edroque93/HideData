@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 
  trueHeader/11
  sizeOfHeader/4
- DataHeaderFileSet = [name/x & null/1 & size/8]+
+ DataHeaderFileSet = (name/x & null/1 & size/8)+
  */
 public class DataHeader {
 
